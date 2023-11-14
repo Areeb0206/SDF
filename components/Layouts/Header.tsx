@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { IRootState } from '../../store';
@@ -13,8 +13,6 @@ const Header = (props: any) => {
     const dispatch = useDispatch();
     const [openLandingPage, setOpenLandingPage] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
-
-    //if window size is 320 then showmenu is true and else false
 
     const toggleMenu = () => {
         if (window.innerWidth < 1024) {
@@ -30,9 +28,9 @@ const Header = (props: any) => {
     };
 
     return (
-        <header className={`sticky top-0 z-50 bg-black/10 duration-300 ${props.className}`}>
+        <header className={`sticky top-0 z-50 duration-300 ${props.className}`}>
             <div className="container">
-                <div className="flex items-center justify-between py-5 lg:py-0">
+                <div className="flex items-center justify-between   py-5 lg:py-0">
                     <Link href="/">
                         <img src="/assets/image/logo/sdflogo.png" alt="plurk" className="h-10 w-full" />
                     </Link>
