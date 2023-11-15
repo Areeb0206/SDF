@@ -122,7 +122,7 @@ const DefaultLayout = ({ children }: PropsWithChildren) => {
                 >
                     <Header className={showTopButton ? 'sticky-header' : ''} />
 
-                    <div className="-mt-[82px] flex-grow overflow-x-hidden lg:-mt-[106px]">{children}</div>
+                    <div className="flex-grow overflow-x-hidden bg-white ">{children}</div>
                     <Footer />
                 </div>
 

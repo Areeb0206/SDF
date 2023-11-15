@@ -29,11 +29,11 @@ const Header = (props: any) => {
     console.log('openServices', openServices, openIndustry);
 
     return (
-        <header className={`z-100 sticky top-0  ${props.className}`}>
+        <header className={`z-100 sticky top-0 bg-white ${props.className}`}>
             <div className="  shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
-                <div className="flex w-full items-center justify-between  py-5  xxs:px-4 xs:px-4 lg:px-12 lg:py-0">
+                <div className="flex w-full items-center justify-between  py-5  lg:px-12 lg:py-0 md:px-4 xs:px-4">
                     <Link href="/">
-                        <img src="/assets/image/logo/sdflogo.png" alt="plurk" className="w-full xxs:h-[40px] lg:h-[60px]" />
+                        <img src="/assets/image/logo/sdflogo.png" alt="plurk" className="w-full lg:h-[60px] md:h-[40px]" />
                     </Link>
                     <div className="flex items-center ">
                         <div onClick={() => toggleMenu()} className={`overlay fixed inset-0 z-[51] bg-black/60 lg:hidden ${showMenu ? '' : 'hidden'}`}></div>
@@ -89,36 +89,36 @@ const Header = (props: any) => {
                                     <div
                                         className={`${
                                             openIndustry
-                                                ? 'lg-w-full z-10 grid bg-white  p-4 xxs:gap-y-5 xxs:pl-10 md:p-0 lg:absolute lg:-mt-4 lg:w-[150px] lg:gap-0 lg:rounded-xl lg:p-2  lg:shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]'
+                                                ? 'lg-w-full z-10 grid bg-white  p-4 lg:absolute lg:-mt-4 lg:w-[150px] lg:gap-0 lg:rounded-xl lg:p-2 lg:shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] md:gap-y-5 md:p-0  md:pl-10'
                                                 : 'hidden'
                                         }`}
                                         onClick={() => toggleMenu()}
                                     >
-                                        <div className=" flex w-full  cursor-pointer items-center justify-between  text-xs text-black hover:bg-[#9E1841] hover:text-white xxs:px-2  lg:py-2">
+                                        <div className=" flex w-full  cursor-pointer items-center justify-between  px-2 py-2 text-xs text-black hover:bg-[#9E1841] hover:text-white">
                                             Digital
                                         </div>
-                                        <div className="flex w-full cursor-pointer items-center  justify-between text-xs text-black hover:bg-[#C5192D] hover:text-white xxs:px-2  lg:py-2">
+                                        <div className="flex w-full cursor-pointer items-center  justify-between px-2 py-2 text-xs text-black hover:bg-[#C5192D]  hover:text-white">
                                             Education
                                         </div>
-                                        <div className="flex w-full cursor-pointer items-center  justify-between text-xs text-black hover:bg-[#FCC30B] hover:text-white xxs:px-2  lg:py-2">
+                                        <div className="flex w-full cursor-pointer items-center  justify-between px-2 py-2 text-xs text-black hover:bg-[#FCC30B]  hover:text-white">
                                             Energy
                                         </div>
-                                        <div className="flex w-full cursor-pointer items-center justify-between text-xs text-black hover:bg-[#A21942] hover:text-white xxs:px-2  lg:py-2">
+                                        <div className="flex w-full cursor-pointer items-center justify-between px-2 py-2 text-xs text-black hover:bg-[#A21942]  hover:text-white">
                                             Financial Services
                                         </div>
-                                        <div className="flex w-full cursor-pointer items-center justify-between text-xs text-black hover:bg-[#4C9F38] hover:text-white xxs:px-2  lg:py-2">
+                                        <div className="flex w-full cursor-pointer items-center justify-between px-2 py-2 text-xs text-black hover:bg-[#4C9F38]  hover:text-white">
                                             Health Care
                                         </div>
-                                        <div className="flex w-full cursor-pointer items-center  justify-between text-xs text-black hover:bg-[#BF8B2E] hover:text-white xxs:px-2  lg:py-2">
+                                        <div className="flex w-full cursor-pointer items-center  justify-between px-2 py-2 text-xs text-black hover:bg-[#BF8B2E]  hover:text-white">
                                             Mobility
                                         </div>
-                                        <div className="flex w-full cursor-pointer items-center  justify-between text-xs text-black hover:bg-[#FD6925] hover:text-white xxs:px-2  lg:py-2">
+                                        <div className="flex w-full cursor-pointer items-center  justify-between px-2 py-2 text-xs text-black hover:bg-[#FD6925]  hover:text-white">
                                             Manufacturing
                                         </div>
-                                        <div className="flex w-full cursor-pointer items-center justify-between text-xs text-black hover:bg-[#FD9D24] hover:text-white xxs:px-2  lg:py-2">
+                                        <div className="flex w-full cursor-pointer items-center justify-between px-2 py-2 text-xs text-black hover:bg-[#FD9D24]  hover:text-white">
                                             Real Estate
                                         </div>
-                                        <div className="flex  w-full cursor-pointer items-center justify-between text-xs text-black hover:bg-[#FD6925] hover:text-white xxs:px-2  lg:py-2 ">
+                                        <div className="flex  w-full cursor-pointer items-center justify-between px-2 py-2 text-xs text-black hover:bg-[#FD6925]  hover:text-white ">
                                             Recycling
                                         </div>
                                     </div>
@@ -159,21 +159,21 @@ const Header = (props: any) => {
                                     <div
                                         className={`${
                                             openServices
-                                                ? 'lg-w-full z-10 grid  bg-white p-4  xxs:gap-y-5 xxs:pl-10 md:p-0 lg:absolute lg:-mt-4 lg:w-[200px] lg:gap-0 lg:rounded-xl lg:p-2  lg:shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]'
+                                                ? 'lg-w-full z-10 grid  bg-white p-4  lg:absolute lg:-mt-4 lg:w-[200px] lg:gap-0 lg:rounded-xl lg:p-2 lg:shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] md:gap-y-5 md:p-0  md:pl-10'
                                                 : 'hidden'
                                         }`}
                                         onClick={() => toggleMenu()}
                                     >
-                                        <div className=" flex w-full  cursor-pointer items-center justify-between  text-xs text-black hover:bg-[#9E1841] hover:text-white xxs:px-2  lg:py-2">
+                                        <div className=" flex w-full  cursor-pointer items-center justify-between  px-2 py-2 text-xs text-black hover:bg-[#9E1841]  hover:text-white">
                                             Country Manager as service
                                         </div>
-                                        <div className="flex w-full cursor-pointer items-center  justify-between text-xs text-black hover:bg-[#C5192D] hover:text-white xxs:px-2  lg:py-2">
+                                        <div className="flex w-full cursor-pointer items-center  justify-between px-2 py-2 text-xs text-black hover:bg-[#C5192D]  hover:text-white">
                                             ESG Stratergy
                                         </div>
-                                        <div className="flex w-full cursor-pointer items-center  justify-between text-xs text-black hover:bg-[#FD9D24] hover:text-white xxs:px-2  lg:py-2">
+                                        <div className="flex w-full cursor-pointer items-center  justify-between px-2 py-2 text-xs text-black hover:bg-[#FD9D24]  hover:text-white">
                                             Interim Management
                                         </div>
-                                        <div className="flex w-full cursor-pointer items-center justify-between text-xs text-black hover:bg-[#4C9F38] hover:text-white xxs:px-2  lg:py-2">
+                                        <div className="flex w-full cursor-pointer items-center justify-between px-2 py-2 text-xs text-black hover:bg-[#4C9F38]  hover:text-white">
                                             Market Research
                                         </div>
                                     </div>
