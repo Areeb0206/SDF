@@ -2,7 +2,7 @@ import React from 'react';
 
 const Section1 = () => (
     <div className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1" data-aos="fade-left" data-aos-duration="1000">
             <div className="lg:p-28 md:mt-12">
                 <div className=" font-light text-[#1a3129]  lg:mt-5 lg:py-0 lg:text-left   lg:text-[1.5rem] lg:text-base md:text-center">
                     Growth | Strategy | ESG | Impact
@@ -37,7 +37,7 @@ const Section1 = () => (
                 </div>
             </div>
         </div>
-        <div className="lg:col-span-1 md:my-10">
+        <div className="lg:col-span-1 md:my-10" data-aos="fade-right" data-aos-duration="1000">
             <img src="./assets/image/section1/herosectionimg.png" className="h-auto w-full rounded-b-2xl md:mx-auto md:w-11/12" alt="img" />
         </div>
         <div className=" lg:col-span-1 lg:hidden md:block">

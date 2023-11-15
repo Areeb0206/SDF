@@ -29,7 +29,7 @@ const Header = (props: any) => {
     console.log('openServices', openServices, openIndustry);
 
     return (
-        <header className={`z-100 sticky top-0 bg-white ${props.className}`}>
+        <header className={`z-100 sticky top-0 bg-white  ${props.className}`}>
             <div className="  shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
                 <div className="flex w-full items-center justify-between  py-5  lg:px-12 lg:py-0 md:px-4 xs:px-4">
                     <Link href="/">
