@@ -1,9 +1,13 @@
+/* eslint-disable max-len */
 import { PropsWithChildren, useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import App from '../../App';
 import Footer from './Footer';
 import Header from './Header';
+import { useAtom } from 'jotai';
+import { jotaiIndustry, jotaiServices } from '../../jotaiStore/navbar';
+import React from 'react';
 
 const DefaultLayout = ({ children }: PropsWithChildren) => {
     const [showLoader, setShowLoader] = useState(true);
@@ -15,7 +19,7 @@ const DefaultLayout = ({ children }: PropsWithChildren) => {
     };
 
     const onScrollHandler = () => {
-        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
             setShowTopButton(true);
         } else {
             setShowTopButton(false);
@@ -43,7 +47,8 @@ const DefaultLayout = ({ children }: PropsWithChildren) => {
             once: true,
         });
     }, []);
-
+    const [, setOpenIndustry] = useAtom(jotaiIndustry);
+    const [, setOpenServices] = useAtom(jotaiServices);
     return (
         <App>
             {/* BEGIN MAIN CONTAINER */}
@@ -107,7 +112,14 @@ const DefaultLayout = ({ children }: PropsWithChildren) => {
                     </div>
                 )}
 
-                <div className="flex min-h-screen flex-col bg-white bg-gradient-to-r from-[#FCF1F4] to-[#EDFBF9] font-mulish text-base font-normal text-gray antialiased dark:bg-[#101926] dark:from-transparent dark:to-transparent">
+                <div
+                    onClick={() => {
+                        console.log('11', 11);
+                        setOpenIndustry(false);
+                        setOpenServices(false);
+                    }}
+                    className="flex min-h-screen flex-col bg-white bg-gradient-to-r from-[#FCF1F4] to-[#EDFBF9] font-mulish text-base font-normal text-gray antialiased dark:bg-[#101926] dark:from-transparent dark:to-transparent"
+                >
                     <Header className={showTopButton ? 'sticky-header' : ''} />
 
                     <div className="-mt-[82px] flex-grow overflow-x-hidden lg:-mt-[106px]">{children}</div>

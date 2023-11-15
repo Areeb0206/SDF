@@ -1,43 +1,44 @@
 /* eslint-disable max-len */
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { IRootState } from '../../store';
 import { toggleTheme, toggleDirection } from '../../store/themeConfigSlice';
 import { useRouter } from 'next/router';
+import { useAtom } from 'jotai';
+import { jotaiIndustry, jotaiServices } from '../../jotaiStore/navbar';
 
 const Header = (props: any) => {
     const router = useRouter();
 
     const themeConfig = useSelector((state: IRootState) => state.themeConfig);
     const dispatch = useDispatch();
-    const [openLandingPage, setOpenLandingPage] = useState(false);
+    const [openIndustry, setOpenIndustry] = useAtom(jotaiIndustry);
+    const [openServices, setOpenServices] = useAtom(jotaiServices);
     const [showMenu, setShowMenu] = useState(false);
 
     const toggleMenu = () => {
+        setOpenIndustry(false);
+        setOpenServices(false);
         if (window.innerWidth < 1024) {
             setShowMenu(!showMenu);
         } else {
             setShowMenu(false);
         }
     };
-
-    const [showSearch, setShowSearch] = useState(false);
-    const toggleSearch = () => {
-        setShowSearch(!showSearch);
-    };
+    console.log('openServices', openServices, openIndustry);
 
     return (
-        <header className={`sticky top-0 z-50 duration-300 ${props.className}`}>
-            <div className="container">
-                <div className="flex items-center justify-between   py-5 lg:py-0">
+        <header className={`z-100 sticky top-0  ${props.className}`}>
+            <div className="  shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+                <div className="flex w-full items-center justify-between  py-5  xxs:px-4 xs:px-4 lg:px-12 lg:py-0">
                     <Link href="/">
-                        <img src="/assets/image/logo/sdflogo.png" alt="plurk" className="h-10 w-full" />
+                        <img src="/assets/image/logo/sdflogo.png" alt="plurk" className="w-full xxs:h-[40px] lg:h-[60px]" />
                     </Link>
-                    <div className="flex items-center">
+                    <div className="flex items-center ">
                         <div onClick={() => toggleMenu()} className={`overlay fixed inset-0 z-[51] bg-black/60 lg:hidden ${showMenu ? '' : 'hidden'}`}></div>
-                        <div className={`menus  ${showMenu ? 'overflow-y-auto ltr:!right-0 rtl:!left-0' : 'flex'}`}>
-                            <div className="border-b border-gray/10 ltr:text-right rtl:text-left lg:hidden">
+                        <div onClick={() => {}} className={`menus  ${showMenu ? 'overflow-y-auto ltr:!right-0 rtl:!left-0' : 'flex'}`}>
+                            <div onClick={() => {}} className="border-b border-gray/10 ltr:text-right rtl:text-left lg:hidden">
                                 <button onClick={() => toggleMenu()} type="button" className="p-4">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -51,141 +52,179 @@ const Header = (props: any) => {
                                     </svg>
                                 </button>
                             </div>
-                            <ul onClick={() => toggleMenu()}>
+                            <ul className="h-full " onClick={() => {}}>
                                 <li>
-                                    <Link href="/" className={router.pathname === '/' ? 'active' : ''}>
-                                        Home
+                                    <Link onClick={toggleMenu} href="/">
+                                        <span className="text-black hover:bg-[#11578F] hover:text-white lg:p-2">Home</span>
                                     </Link>
                                 </li>
                                 <li
-                                    className={`${openLandingPage ? 'group relative' : 'relative'}`}
+                                    className={` relative ${openIndustry ? 'group ' : ''}`}
                                     onClick={(e) => {
                                         e.stopPropagation();
-                                        setOpenLandingPage(!openLandingPage);
+                                        setOpenIndustry(!openIndustry);
+                                        setOpenServices(false);
                                     }}
                                 >
-                                    <Link
-                                        href="#"
-                                        className={
-                                            router.pathname === '/crypto' ||
-                                            router.pathname === '/modern-saas' ||
-                                            router.pathname === '/real-estate' ||
-                                            router.pathname === '/healthcare' ||
-                                            router.pathname === '/marketing' ||
-                                            router.pathname === '/application' ||
-                                            router.pathname === '/hotel-resort' ||
-                                            router.pathname === '/nft' ||
-                                            router.pathname === '/online-courses' ||
-                                            router.pathname === '/restaurant' ||
-                                            router.pathname === '/consulting' ||
-                                            router.pathname === '/creative-agency' ||
-                                            router.pathname === '/insurance' ||
-                                            router.pathname === '/photography' ||
-                                            router.pathname === '/construction' ||
-                                            router.pathname === '/blog-landing' ||
-                                            router.pathname === '/event-concert' ||
-                                            router.pathname === '/gym' ||
-                                            router.pathname === '/job-placement' ||
-                                            router.pathname === '/online-payments' ||
-                                            router.pathname === '/personal-portfolio' ||
-                                            router.pathname === '/portfolio-landing'
-                                                ? 'active'
-                                                : ''
-                                        }
-                                    >
-                                        Landing
-                                        <div className="transition duration-500 group-hover:rotate-180 ltr:ml-2 rtl:mr-2">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M19 9L12 15L10.25 13.5M5 9L7.33333 11"
-                                                    stroke="currentColor"
-                                                    strokeWidth="1.5"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                />
-                                            </svg>
+                                    <Link href="#" className=" text-black">
+                                        <div
+                                            className={` ${
+                                                openIndustry ? 'lg:bg-[#4B8F33] lg:text-white' : ''
+                                            } flex w-full items-center justify-between lg:p-2 lg:hover:bg-[#4B8F33] lg:hover:text-white`}
+                                        >
+                                            Industry
+                                            <div className=" ltr:ml-2 rtl:mr-2">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M19 9L12 15L10.25 13.5M5 9L7.33333 11"
+                                                        stroke="currentColor"
+                                                        strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                    />
+                                                </svg>
+                                            </div>
                                         </div>
                                     </Link>
-                                    <div className="submenu" onClick={() => toggleMenu()}>
-                                        <Link href="/crypto" className={router.pathname === '/crypto' ? 'active' : ''}>
-                                            Crypto Currency
-                                        </Link>
-                                        <Link href="/modern-saas" className={router.pathname === '/modern-saas' ? 'active' : ''}>
-                                            {' '}
-                                            Modern Saas{' '}
-                                        </Link>
-                                        <Link href="/real-estate" className={router.pathname === '/real-estate' ? 'active' : ''}>
-                                            {' '}
-                                            Real Estate{' '}
-                                        </Link>
-                                        <Link href="/healthcare" className={router.pathname === '/healthcare' ? 'active' : ''}>
-                                            {' '}
-                                            Health Care{' '}
-                                        </Link>
+                                    <div
+                                        className={`${
+                                            openIndustry
+                                                ? 'lg-w-full z-10 grid bg-white  p-4 xxs:gap-y-5 xxs:pl-10 md:p-0 lg:absolute lg:-mt-4 lg:w-[150px] lg:gap-0 lg:rounded-xl lg:p-2  lg:shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]'
+                                                : 'hidden'
+                                        }`}
+                                        onClick={() => toggleMenu()}
+                                    >
+                                        <div className=" flex w-full  cursor-pointer items-center justify-between  text-xs text-black hover:bg-[#9E1841] hover:text-white xxs:px-2  lg:py-2">
+                                            Digital
+                                        </div>
+                                        <div className="flex w-full cursor-pointer items-center  justify-between text-xs text-black hover:bg-[#C5192D] hover:text-white xxs:px-2  lg:py-2">
+                                            Education
+                                        </div>
+                                        <div className="flex w-full cursor-pointer items-center  justify-between text-xs text-black hover:bg-[#FCC30B] hover:text-white xxs:px-2  lg:py-2">
+                                            Energy
+                                        </div>
+                                        <div className="flex w-full cursor-pointer items-center justify-between text-xs text-black hover:bg-[#A21942] hover:text-white xxs:px-2  lg:py-2">
+                                            Financial Services
+                                        </div>
+                                        <div className="flex w-full cursor-pointer items-center justify-between text-xs text-black hover:bg-[#4C9F38] hover:text-white xxs:px-2  lg:py-2">
+                                            Health Care
+                                        </div>
+                                        <div className="flex w-full cursor-pointer items-center  justify-between text-xs text-black hover:bg-[#BF8B2E] hover:text-white xxs:px-2  lg:py-2">
+                                            Mobility
+                                        </div>
+                                        <div className="flex w-full cursor-pointer items-center  justify-between text-xs text-black hover:bg-[#FD6925] hover:text-white xxs:px-2  lg:py-2">
+                                            Manufacturing
+                                        </div>
+                                        <div className="flex w-full cursor-pointer items-center justify-between text-xs text-black hover:bg-[#FD9D24] hover:text-white xxs:px-2  lg:py-2">
+                                            Real Estate
+                                        </div>
+                                        <div className="flex  w-full cursor-pointer items-center justify-between text-xs text-black hover:bg-[#FD6925] hover:text-white xxs:px-2  lg:py-2 ">
+                                            Recycling
+                                        </div>
                                     </div>
                                 </li>
                                 <li>
-                                    <Link
-                                        href="/portfolio"
-                                        className={router.pathname === '/portfolio' || router.pathname === '/portfolio-detail' ? 'active' : ''}
+                                    <Link onClick={toggleMenu} href="/">
+                                        <span className="text-black hover:bg-[#2186C9] hover:text-white lg:p-2">About</span>
+                                    </Link>
+                                </li>
+                                <li
+                                    className={` relative ${openServices ? 'group ' : ''}`}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setOpenIndustry(false);
+                                        setOpenServices(!openServices);
+                                    }}
+                                >
+                                    <Link href="#" className=" text-black">
+                                        <div
+                                            className={` ${
+                                                openServices ? 'lg:bg-[#E75322] lg:text-white' : ''
+                                            } flex w-full items-center justify-between lg:p-2 lg:hover:bg-[#E75322] lg:hover:text-white`}
+                                        >
+                                            Services
+                                            <div className=" ltr:ml-2 rtl:mr-2">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M19 9L12 15L10.25 13.5M5 9L7.33333 11"
+                                                        stroke="currentColor"
+                                                        strokeWidth="1.5"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                    />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                    <div
+                                        className={`${
+                                            openServices
+                                                ? 'lg-w-full z-10 grid  bg-white p-4  xxs:gap-y-5 xxs:pl-10 md:p-0 lg:absolute lg:-mt-4 lg:w-[200px] lg:gap-0 lg:rounded-xl lg:p-2  lg:shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]'
+                                                : 'hidden'
+                                        }`}
+                                        onClick={() => toggleMenu()}
                                     >
-                                        Portfolio
+                                        <div className=" flex w-full  cursor-pointer items-center justify-between  text-xs text-black hover:bg-[#9E1841] hover:text-white xxs:px-2  lg:py-2">
+                                            Country Manager as service
+                                        </div>
+                                        <div className="flex w-full cursor-pointer items-center  justify-between text-xs text-black hover:bg-[#C5192D] hover:text-white xxs:px-2  lg:py-2">
+                                            ESG Stratergy
+                                        </div>
+                                        <div className="flex w-full cursor-pointer items-center  justify-between text-xs text-black hover:bg-[#FD9D24] hover:text-white xxs:px-2  lg:py-2">
+                                            Interim Management
+                                        </div>
+                                        <div className="flex w-full cursor-pointer items-center justify-between text-xs text-black hover:bg-[#4C9F38] hover:text-white xxs:px-2  lg:py-2">
+                                            Market Research
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <Link onClick={toggleMenu} href="/">
+                                        <span className="text-black hover:bg-[#61A630] hover:text-white lg:p-2">SDGxExpand</span>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link
-                                        href="/services"
-                                        className={router.pathname === '/services' || router.pathname === '/services-detail' ? 'active' : ''}
-                                    >
-                                        Service
+                                    <Link onClick={toggleMenu} href="/">
+                                        <span className="text-black hover:bg-[#8F1537] hover:text-white lg:p-2">SDGxESG</span>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/team" className={router.pathname === '/team' ? 'active' : ''}>
-                                        Team
+                                    <Link onClick={toggleMenu} href="/">
+                                        <span className="text-black hover:bg-[#FCC30B] hover:text-white lg:p-2">Resources</span>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/about-us" className={router.pathname === '/about-us' ? 'active' : ''}>
-                                        About Us
+                                    <Link onClick={toggleMenu} href="/">
+                                        <span className="text-black hover:bg-[#143B57] hover:text-white lg:p-2">News</span>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="/career" className={router.pathname === '/career' ? 'active' : ''}>
-                                        Career
+                                    <Link onClick={toggleMenu} href="/">
+                                        <span className="text-black hover:bg-[#E75322] hover:text-white lg:p-2">Center</span>
                                     </Link>
                                 </li>
                             </ul>
-                            <div className="relative hidden items-center before:absolute before:top-1/2 before:h-[30px] before:w-[2px] before:-translate-y-1/2 before:bg-gray/30 ltr:pl-9 ltr:before:-left-[2px] rtl:pr-9 rtl:before:-right-[2px] lg:inline-flex">
-                                Contact us
-                            </div>
                         </div>
 
-                        <button
-                            type="button"
-                            className="flex h-10 w-10 items-center justify-center rounded-full bg-primary lg:hidden"
-                            onClick={() => toggleMenu()}
-                        >
+                        <button type="button" className="flex h-10 w-10 items-center justify-center rounded-full  lg:hidden" onClick={() => toggleMenu()}>
                             <svg width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
                                 <path
                                     d="M2 15H11C11.552 15 12 15.447 12 16C12 16.553 11.552 17 11 17H2C1.448 17 1 16.553 1 16C1 15.447 1.448 15 2 15Z"
-                                    fill="currentColor"
+                                    fill="#000"
                                 />
-                                <path
-                                    d="M2 8H20C20.552 8 21 8.447 21 9C21 9.553 20.552 10 20 10H2C1.448 10 1 9.553 1 9C1 8.447 1.448 8 2 8Z"
-                                    fill="currentColor"
-                                />
-                                <path
-                                    d="M21 2C21 1.447 20.552 1 20 1H7C6.448 1 6 1.447 6 2C6 2.553 6.448 3 7 3H20C20.552 3 21 2.553 21 2Z"
-                                    fill="currentColor"
-                                />
+                                <path d="M2 8H20C20.552 8 21 8.447 21 9C21 9.553 20.552 10 20 10H2C1.448 10 1 9.553 1 9C1 8.447 1.448 8 2 8Z" fill="#000" />
+                                <path d="M21 2C21 1.447 20.552 1 20 1H7C6.448 1 6 1.447 6 2C6 2.553 6.448 3 7 3H20C20.552 3 21 2.553 21 2Z" fill="#000" />
                             </svg>
+                            {/* <img src="/assets/image/menu/menu.svg" style={{ width: 100, height: 50 }} /> */}
                         </button>
+                    </div>
+                    <div className=" relative hidden items-center rounded-lg bg-black px-5 py-3 font-medium text-white before:absolute before:top-1/2    lg:inline-flex">
+                        Contact us
                     </div>
                 </div>
             </div>
         </header>
     );
 };
-
+//
 export default Header;
