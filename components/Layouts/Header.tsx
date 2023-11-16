@@ -124,7 +124,7 @@ const Header = (props: any) => {
                                     </div>
                                 </li>
                                 <li>
-                                    <Link onClick={toggleMenu} href="/">
+                                    <Link onClick={toggleMenu} href="/about">
                                         <span className="text-black hover:bg-[#2186C9] hover:text-white lg:p-2">About</span>
                                     </Link>
                                 </li>
