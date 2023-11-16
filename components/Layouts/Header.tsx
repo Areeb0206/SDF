@@ -33,7 +33,7 @@ const Header = (props: any) => {
             <div className="  shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
                 <div className="flex w-full items-center justify-between  py-5  lg:px-12 lg:py-0 md:px-4 xs:px-4">
                     <Link href="/">
-                        <img src="/assets/image/logo/sdflogo.png" alt="plurk" className="w-full lg:h-[60px] md:h-[40px]" />
+                        <img src="/assets/image/logo/sdglogo.png" alt="plurk" className="w-full lg:h-[60px] md:h-[40px]" />
                     </Link>
                     <div className="flex items-center ">
                         <div onClick={() => toggleMenu()} className={`overlay fixed inset-0 z-[51] bg-black/60 lg:hidden ${showMenu ? '' : 'hidden'}`}></div>
