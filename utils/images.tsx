@@ -10,3 +10,4 @@ export const image9 = '../../assets/image/section2/image9.png';
 export const raise = '../../assets/image/section3/raise.png';
 export const impact = '../../assets/image/section3/impact.png';
 export const expand = '../../assets/image/section3/expand.png';
+export const section5 = '../../assets/image/section5/section5.png';
